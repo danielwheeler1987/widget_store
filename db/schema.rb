@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_02_225753) do
+ActiveRecord::Schema.define(version: 2018_06_02_232150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2018_06_02_225753) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "sizes_id"
-    t.bigint "colors_id"
-    t.index ["colors_id"], name: "index_widgets_on_colors_id"
-    t.index ["sizes_id"], name: "index_widgets_on_sizes_id"
+    t.bigint "size_id"
+    t.bigint "color_id"
+    t.index ["color_id"], name: "index_widgets_on_color_id"
+    t.index ["size_id"], name: "index_widgets_on_size_id"
   end
 
-  add_foreign_key "widgets", "colors", column: "colors_id"
-  add_foreign_key "widgets", "sizes", column: "sizes_id"
+  add_foreign_key "widgets", "colors"
+  add_foreign_key "widgets", "sizes"
 end
