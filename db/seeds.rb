@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Create colors
+20.times do
+  Color.create(name: Faker::Color.unique.color_name)
+end
+
+# Create sizes
+['small', 'medium', 'large', 'huge'].each do |size|
+  Size.create(name: size)
+end
+
+# Create widgets
+100.times do
+  Widget.create(
+    name: Faker::Hipster.unique.word,
+    quantity: Faker::Number.non_zero_digit,
+    color_id: Color.order("RANDOM()").first.id,
+    size_id: Size.order("RANDOM()").first.id
+  )
+end
