@@ -1,5 +1,8 @@
 class StoreController < ApplicationController
   def index
-    @widgets = Widget.order(:name).page(params[:page]).per(12)
+    @widgets = Widget.available
+                     .order(:name)
+                     .page(params[:page])
+                     .per(12)
   end
 end

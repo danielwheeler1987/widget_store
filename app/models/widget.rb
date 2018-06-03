@@ -14,6 +14,8 @@ class Widget < ApplicationRecord
   belongs_to :size
   belongs_to :category
 
+  scope :available, -> { where('quantity > ?', 0) }
+
   INVENTORY_WARNING_LEVEL = 2.freeze
 
   def inventory_approaching_empty?
