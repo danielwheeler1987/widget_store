@@ -6,4 +6,10 @@ class Widget < ApplicationRecord
 
   belongs_to :color
   belongs_to :size
+
+  INVENTORY_WARNING_LEVEL = 2.freeze
+
+  def inventory_issue?
+    quantity <= INVENTORY_WARNING_LEVEL
+  end
 end

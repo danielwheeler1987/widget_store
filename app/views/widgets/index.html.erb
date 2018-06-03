@@ -9,17 +9,20 @@
       <th scope="col">Color</th>
       <th scope="col">Size</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Created At</th>
       <th scope="col">Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @widgets.each do |widget| %>
-      <tr>
-        <td><%= "Widget #{widget.name}" %></td>
-        <td><%= widget.color.name %></td>
-        <td><%= widget.size.name %></td>
-        <td><%= widget.quantity %></td>
+      <% widget_listing_presenter = WidgetListingPresenter.new(widget) %>
+      <tr class="<%= 'table-danger' if widget.inventory_issue? %>">
+        <td><%= "Widget #{widget_listing_presenter.name}" %></td>
+        <td><%= widget_listing_presenter.color.name %></td>
+        <td><%= widget_listing_presenter.size.name %></td>
+        <td><%= widget_listing_presenter.quantity %></td>
+        <td><%= widget_listing_presenter.created_at %></td>
         <td>
           <%= link_to 'Edit', edit_widget_path(widget) %> | <%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>

@@ -2,7 +2,7 @@ class WidgetsController < ApplicationController
   before_action :set_widget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @widgets = Widget.order(:name).page params[:page]
+    @widgets = Widget.order(:name).page(params[:page])
   end
 
   def show
