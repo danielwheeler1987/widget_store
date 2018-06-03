@@ -17,7 +17,7 @@
   <tbody>
     <% @widgets.each do |widget| %>
       <% widget_listing_presenter = WidgetListingPresenter.new(widget) %>
-      <tr class="<%= 'table-danger' if widget.inventory_issue? %>">
+      <tr class="<%= 'table-danger' if widget.inventory_approaching_empty? %>">
         <td><%= "Widget #{widget_listing_presenter.name}" %></td>
         <td><%= widget_listing_presenter.color.name %></td>
         <td><%= widget_listing_presenter.size.name %></td>

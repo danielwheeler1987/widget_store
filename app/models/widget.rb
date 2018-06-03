@@ -9,7 +9,11 @@ class Widget < ApplicationRecord
 
   INVENTORY_WARNING_LEVEL = 2.freeze
 
-  def inventory_issue?
+  def inventory_approaching_empty?
     quantity <= INVENTORY_WARNING_LEVEL
+  end
+
+  def inventory_empty?
+    quantity.zero?
   end
 end

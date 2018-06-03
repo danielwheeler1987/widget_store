@@ -5,8 +5,8 @@ class WidgetListingPresenter
                  :quantity,
                  :color,
                  :size,
-                 :inventory_issue?
-                 :to_model
+                 :inventory_approaching_empty?,
+                 :inventory_empty?
 
   attr_reader :widget
 
