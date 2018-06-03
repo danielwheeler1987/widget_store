@@ -1,4 +1,8 @@
 class Widget < ApplicationRecord
+  belongs_to :color
+  belongs_to :size
+  belongs_to :category
+  
   paginates_per 10
   
   validates :name,
@@ -9,10 +13,6 @@ class Widget < ApplicationRecord
             presence: true
 
   validates_numericality_of :quantity, greater_than: -1
-
-  belongs_to :color
-  belongs_to :size
-  belongs_to :category
 
   default_scope { order :name }
   scope :available, -> { where('quantity > ?', 0).order(:name) }
