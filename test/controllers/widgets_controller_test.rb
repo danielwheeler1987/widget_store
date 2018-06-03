@@ -2,10 +2,11 @@ require 'test_helper'
 
 class WidgetsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @widget = widgets(:one)
+    @widget = widgets(:widget_one)
   end
 
   test "should get index" do
+    #byebug
     get widgets_url
     assert_response :success
   end
@@ -17,10 +18,19 @@ class WidgetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create widget" do
     assert_difference('Widget.count') do
-      post widgets_url, params: { widget: {  } }
+      post widgets_url, params: {
+        widget: {
+          name: Faker::Hipster.unique.word,
+          quantity: Faker::Number.non_zero_digit,
+          color_id: Color.first.id,
+          size_id: Size.first.id,
+          category_id: Category.first.id
+        }
+      }
     end
 
-    assert_redirected_to widget_url(Widget.last)
+    assert_redirected_to widgets_url
+    assert_equal flash[:notice], 'Great! Widget was successfully created.'
   end
 
   test "should show widget" do
@@ -34,8 +44,18 @@ class WidgetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update widget" do
-    patch widget_url(@widget), params: { widget: {  } }
-    assert_redirected_to widget_url(@widget)
+    patch widget_url(@widget), params: {
+      widget: {
+        name: Faker::Hipster.unique.word,
+          quantity: Faker::Number.non_zero_digit,
+          color_id: Color.first.id,
+          size_id: Size.first.id,
+          category_id: Category.first.id
+      }
+    }
+
+    assert_redirected_to widgets_url
+    assert_equal flash[:notice], 'Great! Widget was successfully updated.'
   end
 
   test "should destroy widget" do
@@ -44,5 +64,6 @@ class WidgetsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to widgets_url
+    assert_equal flash[:notice], 'Great! Widget was successfully destroyed.'
   end
 end

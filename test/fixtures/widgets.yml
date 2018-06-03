@@ -1,5 +1,6 @@
-one: 
-  name: Faker::Hipster.unique.word
-  quantity: Faker::Number.non_zero_digit
-  color_id: 1
-  size_id: 1
+widget_one: 
+  name: hello world
+  quantity: 25
+  color: color_black
+  size: size_large
+  category: category_artisanal

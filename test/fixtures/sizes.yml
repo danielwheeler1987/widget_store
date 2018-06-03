@@ -1,0 +1,8 @@
+size_small:
+  name: 'small'
+
+size_medium:
+  name: 'medium'
+
+size_large:
+  name: 'lage'
