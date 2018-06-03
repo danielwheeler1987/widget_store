@@ -14,7 +14,12 @@ class Widget < ApplicationRecord
   belongs_to :size
   belongs_to :category
 
-  scope :available, -> { where('quantity > ?', 0) }
+  default_scope { order :name }
+  scope :available, -> { where('quantity > ?', 0).order(:name) }
+  scope :filter_by_name, -> (name) { where('name LIKE ?', "%#{name}%").available }
+  scope :filter_by_color, -> (color_id) { where(color_id: color_id).available }
+  scope :filter_by_size, -> (size_id) { where(size_id: size_id).available }
+  scope :filter_by_category, -> (category_id) { where(category_id: category_id).available }
 
   INVENTORY_WARNING_LEVEL = 2.freeze
 

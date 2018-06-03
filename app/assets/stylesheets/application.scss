@@ -15,3 +15,17 @@
  */
 
 @import "bootstrap";
+
+.tab-pane  {
+  margin-top: 1rem;
+}
+
+.container {
+  padding-top: 2rem;
+}
+
+.jumbotron {
+  &--small {
+    padding: 2rem;
+  }
+}

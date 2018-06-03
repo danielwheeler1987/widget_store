@@ -10,12 +10,12 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1">Widget Store</span>
+    </nav>
     <div class="container">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">The Widget Store</h1>
-          <p class="lead">Welcome to the widget store. Please enjoy all the random and pointless widgets.</p>
-        </div>
+      <div class="jumbotron jumbotron--small">
+        <%= render partial: 'shared/widget_search' %>
       </div>
       <%= yield %>
     </div>
