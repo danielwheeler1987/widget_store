@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header"><%= widget.name %></div>
+  <div class="card-body">
+    <ul>
+      <li>Category: <%= widget.category %></li>
+      <li>Color: <%= widget.color %></li>
+      <li>Size: <%= widget.size %></li>
+      <li>Quantity: <%= widget.quantity %></li>
+    </ul>
+    
+    <% if widget.inventory_empty? %>
+      <span>Currently out of stock.</span>
+    <% else %>
+      <span>Order This Widget</span>
+    <% end %>
+  </div>
+</div>

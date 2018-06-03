@@ -1,0 +1,10 @@
+<h1>Widget Store</h1>
+
+<div class="card-columns">
+  <% @widgets.each do |widget| %>
+    <% widget_list_presenter = WidgetListingPresenter.new(widget) %>
+    <%= render partial: 'shared/widget_card', locals: { widget: widget_list_presenter } %>
+  <% end %>
+</div>
+
+<%= paginate @widgets %>
