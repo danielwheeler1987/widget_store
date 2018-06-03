@@ -3,8 +3,6 @@ class WidgetListingPresenter
 
   def_delegators :@widget,
                  :quantity,
-                 :color,
-                 :size,
                  :inventory_approaching_empty?,
                  :inventory_empty?
 
@@ -12,6 +10,12 @@ class WidgetListingPresenter
 
   def initialize(widget)
     @widget = widget
+  end
+
+  %i(color size category).each do |category_name|
+    define_method category_name do
+      widget.send(category_name).name.titleize
+    end
   end
 
   def name

@@ -45,6 +45,6 @@ class WidgetsController < ApplicationController
   end
 
   def widget_params
-    params.fetch(:widget, {}).permit(:name, :quantity, :color_id, :size_id)
+    params.fetch(:widget, {}).permit(:name, :quantity, :color_id, :size_id, :category_id)
   end
 end

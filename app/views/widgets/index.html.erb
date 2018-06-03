@@ -6,6 +6,7 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Category</th>
       <th scope="col">Color</th>
       <th scope="col">Size</th>
       <th scope="col">Quantity</th>
@@ -16,13 +17,14 @@
 
   <tbody>
     <% @widgets.each do |widget| %>
-      <% widget_listing_presenter = WidgetListingPresenter.new(widget) %>
+      <% widget_list_presenter = WidgetListingPresenter.new(widget) %>
       <tr class="<%= 'table-danger' if widget.inventory_approaching_empty? %>">
-        <td><%= "Widget #{widget_listing_presenter.name}" %></td>
-        <td><%= widget_listing_presenter.color.name %></td>
-        <td><%= widget_listing_presenter.size.name %></td>
-        <td><%= widget_listing_presenter.quantity %></td>
-        <td><%= widget_listing_presenter.created_at %></td>
+        <td><%= "Widget #{widget_list_presenter.name}" %></td>
+        <td><%= widget_list_presenter.category %></td>
+        <td><%= widget_list_presenter.color %></td>
+        <td><%= widget_list_presenter.size %></td>
+        <td><%= widget_list_presenter.quantity %></td>
+        <td><%= widget_list_presenter.created_at %></td>
         <td>
           <%= link_to 'Edit', edit_widget_path(widget) %> | <%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>

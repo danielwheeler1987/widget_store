@@ -16,12 +16,18 @@ end
   Size.create(name: size)
 end
 
+# Create categories
+['health', 'sports', 'artisanal'].each do |category|
+  Category.create(name: category)
+end
+
 # Create widgets
 100.times do
   Widget.create(
     name: Faker::Hipster.unique.word,
     quantity: Faker::Number.non_zero_digit,
     color_id: Color.order("RANDOM()").first.id,
-    size_id: Size.order("RANDOM()").first.id
+    size_id: Size.order("RANDOM()").first.id,
+    category_id: Category.order("RANDOM()").first.id
   )
 end
