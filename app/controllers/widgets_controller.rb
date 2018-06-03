@@ -3,9 +3,11 @@ class WidgetsController < ApplicationController
 
   def index
     @widgets = Widget.page(params[:page])
+    respond_to :html, :json
   end
 
   def show
+    respond_to :html, :json
   end
 
   def new
@@ -18,24 +20,35 @@ class WidgetsController < ApplicationController
   def create
     @widget = Widget.new(widget_params)
 
-    if @widget.save
-      redirect_to widgets_url, notice: 'Great! Widget was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @widget.save
+        format.html { redirect_to widgets_url, notice: 'Great! Widget was successfully created.' }
+        format.json { render :show, status: :created, location: @widget }
+      else
+        format.html { render :new }
+        format.json { render json: @widget.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    if @widget.update(widget_params)
-      redirect_to widgets_url, notice: 'Great! Widget was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @widget.update(widget_params)
+        format.html { redirect_to widgets_url, notice: 'Great! Widget was successfully updated.' }
+        format.json { render :show, status: :ok, location: @widget }
+      else
+        format.html { render :edit }
+        format.json { render json: @widget.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @widget.destroy
-    redirect_to widgets_url, notice: 'Great! Widget was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to widgets_url, notice: 'Great! Widget was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
