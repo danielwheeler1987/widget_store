@@ -1,0 +1,33 @@
+<h1>Widgets</h1>
+
+<%= render partial: "shared/flash_messages", flash: flash %> 
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Color</th>
+      <th scope="col">Size</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @widgets.each do |widget| %>
+      <tr>
+        <td><%= "Widget #{widget.name}" %></td>
+        <td><%= widget.color.name %></td>
+        <td><%= widget.size.name %></td>
+        <td><%= widget.quantity %></td>
+        <td>
+          <%= link_to 'Edit', edit_widget_path(widget) %> | <%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @widgets %>
+
+<%= link_to 'New Widget', new_widget_path %>
