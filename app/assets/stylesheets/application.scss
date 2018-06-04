@@ -20,6 +20,7 @@
   margin-top: 1rem;
 }
 
+.container,
 .container-fluid {
   padding-top: 2rem;
 }
@@ -34,6 +35,10 @@
   &--cushionBottom {
     margin-bottom: 2rem;
   }
+}
+
+.shopping-cart {
+  margin-bottom: 2rem;
 }
 
 .search {

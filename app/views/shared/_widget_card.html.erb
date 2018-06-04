@@ -7,7 +7,14 @@
       <li>Size: <%= widget.size %></li>
       <li>Quantity: <%= widget.quantity %></li>
     </ul>
-    
-    <a href="#" class="btn btn-primary">Order This Widget</a>
+
+    <%= button_to "Add Widget",
+                  shopping_cart_items_path(@profile),
+                  params: {
+                    order_item: {
+                      widget_id: widget.id
+                    }
+                  }, 
+                  class: 'btn btn-primary' %>
   </div>
 </div>

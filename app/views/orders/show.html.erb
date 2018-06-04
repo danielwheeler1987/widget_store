@@ -1,0 +1,51 @@
+<h1>My Shopping Cart</h1>
+
+<%= render partial: "shared/flash_messages", flash: flash %> 
+
+<% if @order.order_items.empty? %>
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Your Shopping Cart is Empty!</h4>
+    <p>Hey, Please go back to the store and add some widgets. <%= link_to 'Click here to continue shopping', store_index_path %></p>
+  </div>
+<% else %>
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Widget Name</th>
+        <th scope="col">Widget Information</th>
+        <th scope="col">Quantity Purchased</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_item| %>
+        <% widget_list_presenter = WidgetListingPresenter.new(order_item.widget) %>
+        <tr>
+          <td><%= "Widget #{widget_list_presenter.name}" %></td>
+          <td>
+            <ul>
+              <li>Category: <%= widget_list_presenter.category %></li>
+              <li>Color: <%= widget_list_presenter.color %></li>
+              <li><%= widget_list_presenter.size %></li>
+            </ul>
+          </td>
+          <td><%= order_item.quantity %></td>
+          <td>$0.00</td>
+          <td>
+            <%= link_to 'Remove Widget',
+                        shopping_cart_item_path(order_item),
+                        method: :delete,
+                        data: { confirm: 'Are you sure you want to remove this widget from your shopping cart?' },
+                        class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Finalize Widget Order',
+              finalize_checkout_index_path,
+              class: 'btn btn-primary btn-lg btn-block' %>
+<% end %>

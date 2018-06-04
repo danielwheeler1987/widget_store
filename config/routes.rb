@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'store#index'
 
+  resources :finalize_checkout, only: [:index]
+
+  resources :orders, only: [:show]
+
+  resources :shopping_cart_items, only: [:create, :destroy]
+
   resources :widgets
 
   resources :sizes,

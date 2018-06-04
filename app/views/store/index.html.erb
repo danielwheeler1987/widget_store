@@ -1,3 +1,11 @@
+<% if @current_order.present? %>
+  <div clas="shopping-cart">
+    <%= link_to 'View Shopping Cart', order_url(@current_order) %>
+  </div>
+<% end %>
+
+<%= render partial: "shared/flash_messages", flash: flash %> 
+
 <div class="card-columns">
   <% @widgets.each do |widget| %>
     <% widget_list_presenter = WidgetListingPresenter.new(widget) %>

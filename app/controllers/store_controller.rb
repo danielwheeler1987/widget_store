@@ -1,4 +1,6 @@
 class StoreController < ApplicationController
+  before_action :setup_shopping_cart
+
   def index
     @widgets = widgets_with_params.page(params[:page]).per(12)
   end

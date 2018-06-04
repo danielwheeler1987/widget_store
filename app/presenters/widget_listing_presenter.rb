@@ -2,6 +2,7 @@ class WidgetListingPresenter
   extend Forwardable
 
   def_delegators :@widget,
+                 :id,
                  :quantity,
                  :inventory_approaching_empty?,
                  :inventory_empty?
