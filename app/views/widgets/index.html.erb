@@ -1,5 +1,9 @@
 <h1>Widgets</h1>
 
+<div class="btn--cushionBottom">
+  <%= link_to 'New Widget', new_widget_path, class: 'btn btn-primary' %>
+</div>
+
 <%= render partial: "shared/flash_messages", flash: flash %> 
 
 <table class="table">
@@ -34,5 +38,3 @@
 </table>
 
 <%= paginate @widgets %>
-
-<%= link_to 'New Widget', new_widget_path %>
