@@ -53,7 +53,7 @@ class WidgetsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal 'application/json', request.content_type
     %w(id name quantity color_id size_id category_id).each do |attribute|
-      response.parsed_body.key? attribute
+      assert response.parsed_body.key? attribute
     end
   end
 
