@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card <%= 'border-danger' if widget.inventory_approaching_empty? %>">
   <div class="card-header"><%= widget.name %></div>
   <div class="card-body">
     <ul>

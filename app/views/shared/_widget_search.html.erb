@@ -1,77 +1,105 @@
-<ul class="nav nav-pills" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="filter-by-name-tab" data-toggle="tab" href="#filter-by-name" role="tab" aria-controls="filter-by-name" aria-selected="true">Filter By Name</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="filter-by-size-tab" data-toggle="tab" href="#filter-by-size" role="tab" aria-controls="filter-by-size" aria-selected="false">Filter By Size </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="filter-by-color-tab" data-toggle="tab" href="#filter-by-color" role="tab" aria-controls="filter-by-color" aria-selected="false">Filter By Color</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="filter-by-category-tab" data-toggle="tab" href="#filter-by-category" role="tab" aria-controls="filter-by-category" aria-selected="false">Filter By Category</a>
-  </li>
-</ul>
+<div id="accordion" class="search--sticky">
+  <div class="card card--marginBottom">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Search By Widget Name
+        </button>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_tag(store_index_path, method: :get) do %>
+          <div class="form-group">
+            <%= label_tag :name_term, 'Search By Name', class: 'sr-only' %>
+            <%= text_field_tag :name_term,
+                               nil,
+                               placeholder: 'Enter search terms here...',
+                               class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="filter-by-name" role="tabpanel" aria-labelledby="filter-by-name-tab">
-    <%= form_tag(store_index_path, method: :get) do %>
-      <div class="form-group">
-        <%= label_tag :name_term, 'Search By Name', class: 'sr-only' %>
-        <%= text_field_tag :name_term,
-                           nil,
-                           placeholder: 'Enter search terms here...',
+  <div class="card card--marginBottom">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Search By Widget Size
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_tag(store_index_path, method: :get) do %>
+          <div class="form-group">
+            <%= label_tag :size_term, 'Search By Size', class: 'sr-only' %>
+            <%= select_tag :size_term,
+                           options_from_collection_for_select(Size.all, :id, :name),
+                           include_blank: "Please select a size",
                            class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group">
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 
-  <div class="tab-pane fade" id="filter-by-size" role="tabpanel" aria-labelledby="filter-by-size-tab">
-    <%= form_tag(store_index_path, method: :get) do %>
-      <div class="form-group">
-        <%= label_tag :size_term, 'Search By Size', class: 'sr-only' %>
-        <%= select_tag :size_term,
-                       options_from_collection_for_select(Size.all, :id, :name),
-                       include_blank: "Please select a size",
-                       class: 'form-control' %>
+  <div class="card card--marginBottom">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Search By Widget Color
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_tag(store_index_path, method: :get) do %>
+          <div class="form-group">
+            <%= label_tag :color_term, 'Search By Color', class: 'sr-only' %>
+            <%= select_tag :color_term,
+                           options_from_collection_for_select(Color.all, :id, :name),
+                           include_blank: "Please select a color",
+                           class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group">
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 
-  <div class="tab-pane fade" id="filter-by-color" role="tabpanel" aria-labelledby="filter-by-color-tab">
-    <%= form_tag(store_index_path, method: :get) do %>
-      <div class="form-group">
-        <%= label_tag :color_term, 'Search By Color', class: 'sr-only' %>
-        <%= select_tag :color_term,
-                       options_from_collection_for_select(Color.all, :id, :name),
-                       include_blank: "Please select a color",
-                       class: 'form-control' %>
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Search By Widget Category
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_tag(store_index_path, method: :get) do %>
+          <div class="form-group">
+            <%= label_tag :category_term, 'Search By Category', class: 'sr-only' %>
+            <%= select_tag :category_term,
+                           options_from_collection_for_select(Category.all, :id, :name),
+                           include_blank: "Please select a category",
+                           class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group">
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+    </div>
   </div>
-
-  <div class="tab-pane fade" id="filter-by-category" role="tabpanel" aria-labelledby="filter-by-category-tab">
-    <%= form_tag(store_index_path, method: :get) do %>
-      <div class="form-group">
-        <%= label_tag :category_term, 'Search By Category', class: 'sr-only' %>
-        <%= select_tag :category_term,
-                       options_from_collection_for_select(Category.all, :id, :name),
-                       include_blank: "Please select a category",
-                       class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-    <% end %>
-  </div>
-
 </div>
