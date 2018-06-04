@@ -23,7 +23,7 @@ class SizesControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Size.count' do
       post sizes_url, params: {
         size: {
-          name: 'Super Shiny Red/Orange'
+          name: 'the largest size in the world'
         }
       }, as: :json
     end
@@ -37,7 +37,7 @@ class SizesControllerTest < ActionDispatch::IntegrationTest
   test 'should update size with web service support' do
     patch size_url(@size), params: {
       size: {
-        name: 'Super Duper Shiny Red/Orange/Yellow'
+        name: 'the smallest size in the world'
       }
     }, as: :json
 
