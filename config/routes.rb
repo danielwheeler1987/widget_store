@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'store#index'
+
   resources :widgets
 
   resources :sizes,
@@ -12,6 +15,6 @@ Rails.application.routes.draw do
   resources :categories,
             only: [:index, :show, :create, :update, :destroy],
             constraints: lambda { |req| req.format == :json }
-            
+
   resources :store, only: [:index]
 end
