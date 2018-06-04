@@ -1,4 +1,7 @@
 category_artisanal:
-  name: 'Artisanal'
+  name: 'artisanal'
+
+category_sports:
+  name: 'sports'
 
 

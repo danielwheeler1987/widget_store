@@ -48,7 +48,7 @@ class ColorsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should destroy size with web service support" do
+  test "should destroy color with web service support" do
     size = colors(:color_red)
     assert_difference('Color.count', -1) do
       delete color_url(size), as: :json
