@@ -22,7 +22,7 @@ class ColorsControllerTest < ActionDispatch::IntegrationTest
   test 'should create color with web service support' do
     assert_difference 'Color.count' do
       post colors_url, params: {
-        size: {
+        color: {
           name: 'Super Shiny Red/Orange'
         }
       }, as: :json
@@ -36,7 +36,7 @@ class ColorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update color with web service support' do
     patch color_url(@color), params: {
-      size: {
+      color: {
         name: 'Super Duper Shiny Red/Orange/Yellow'
       }
     }, as: :json
