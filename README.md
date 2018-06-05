@@ -29,6 +29,7 @@ This application was built using the following technologies/tools:
 - Faker
 - Kaminari Pagination
 - Jquery Rails... Dependencey for the bootstrap gem
+- Jbuilder for JSON serialization
 
 
 In general this application is a pure ROR application. I utilized the MVC frameworks tools such as models, controllers, views, helpers, and routes to spin up this application quickly.
