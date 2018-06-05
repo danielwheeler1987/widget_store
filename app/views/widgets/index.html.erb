@@ -23,7 +23,7 @@
     <% @widgets.each do |widget| %>
       <% widget_list_presenter = WidgetListingPresenter.new(widget) %>
       <tr class="<%= 'table-danger' if widget.inventory_approaching_empty? %>">
-        <td><%= "Widget #{widget_list_presenter.name}" %></td>
+        <td><%= "#{widget_list_presenter.name}" %></td>
         <td><%= widget_list_presenter.category %></td>
         <td><%= widget_list_presenter.color %></td>
         <td><%= widget_list_presenter.size %></td>

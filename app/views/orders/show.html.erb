@@ -23,7 +23,7 @@
       <% @order.order_items.each do |order_item| %>
         <% widget_list_presenter = WidgetListingPresenter.new(order_item.widget) %>
         <tr>
-          <td><%= "Widget #{widget_list_presenter.name}" %></td>
+          <td><%= "#{widget_list_presenter.name}" %></td>
           <td>
             <ul>
               <li>Category: <%= widget_list_presenter.category %></li>
